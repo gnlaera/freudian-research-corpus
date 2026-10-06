@@ -1,1 +1,761 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="A structured research corpus on Freudian and post-Freudian psychoanalytic thought, from Freud through object relations, self psychology, relational theory, attachment, mentalization and couple dynamics." />
+  <meta name="theme-color" content="#1f2937" />
+
+  <title>Freudian and Post-Freudian Thought Research Corpus</title>
+
+  <style>
+    :root {
+      --bg: #f7f6f2;
+      --surface: #ffffff;
+      --surface-2: #f0eee8;
+      --text: #1f2933;
+      --muted: #64707d;
+      --line: #d9d7d0;
+      --accent: #7a3f2b;
+      --accent-2: #5c2f21;
+      --shadow: 0 12px 32px rgba(31, 41, 51, 0.07);
+      --radius: 18px;
+      --max: 1180px;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      background:
+        radial-gradient(circle at top right, rgba(122, 63, 43, 0.07), transparent 28rem),
+        var(--bg);
+      color: var(--text);
+      font-family:
+        Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont,
+        "Segoe UI", sans-serif;
+      line-height: 1.6;
+    }
+
+    a {
+      color: var(--accent);
+      text-decoration-thickness: 1px;
+      text-underline-offset: 3px;
+    }
+
+    a:hover {
+      color: var(--accent-2);
+    }
+
+    .wrap {
+      width: min(calc(100% - 2rem), var(--max));
+      margin-inline: auto;
+    }
+
+    .site-header {
+      padding: 1.25rem 0;
+      border-bottom: 1px solid rgba(217, 215, 208, 0.9);
+      background: rgba(247, 246, 242, 0.88);
+      backdrop-filter: blur(12px);
+      position: sticky;
+      top: 0;
+      z-index: 20;
+    }
+
+    .nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+    }
+
+    .brand {
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      color: var(--text);
+      text-decoration: none;
+    }
+
+    .nav-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+      font-size: 0.94rem;
+    }
+
+    .nav-links a {
+      color: var(--muted);
+      text-decoration: none;
+    }
+
+    .nav-links a:hover {
+      color: var(--text);
+    }
+
+    .hero {
+      padding: 6rem 0 4rem;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.35rem 0.65rem;
+      background: var(--surface-2);
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      color: var(--muted);
+      font-size: 0.82rem;
+      font-weight: 700;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+    }
+
+    h1, h2, h3 {
+      line-height: 1.15;
+      letter-spacing: -0.035em;
+    }
+
+    h1 {
+      max-width: 900px;
+      margin: 1.2rem 0 1.25rem;
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: clamp(2.7rem, 7vw, 5.8rem);
+      font-weight: 500;
+    }
+
+    .hero-copy {
+      max-width: 790px;
+      margin: 0;
+      color: var(--muted);
+      font-size: clamp(1.08rem, 2.2vw, 1.35rem);
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.8rem;
+      margin-top: 2rem;
+    }
+
+    .button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 44px;
+      padding: 0.7rem 1rem;
+      border-radius: 10px;
+      border: 1px solid var(--line);
+      background: var(--surface);
+      color: var(--text);
+      font-weight: 650;
+      text-decoration: none;
+      box-shadow: 0 4px 14px rgba(31, 41, 51, 0.04);
+    }
+
+    .button.primary {
+      color: white;
+      background: var(--accent);
+      border-color: var(--accent);
+    }
+
+    .button:hover {
+      transform: translateY(-1px);
+    }
+
+    .section {
+      padding: 4.2rem 0;
+    }
+
+    .section + .section {
+      border-top: 1px solid var(--line);
+    }
+
+    .section-head {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) minmax(280px, 0.8fr);
+      gap: 2rem;
+      align-items: end;
+      margin-bottom: 2rem;
+    }
+
+    .section-head h2 {
+      margin: 0;
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: clamp(2rem, 5vw, 3.5rem);
+      font-weight: 500;
+    }
+
+    .section-head p {
+      margin: 0;
+      color: var(--muted);
+    }
+
+    .about-grid,
+    .path-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 1rem;
+    }
+
+    .mini-card {
+      padding: 1.35rem;
+      background: var(--surface);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+    }
+
+    .mini-card h3 {
+      margin: 0 0 0.55rem;
+      font-size: 1.1rem;
+    }
+
+    .mini-card p {
+      margin: 0;
+      color: var(--muted);
+    }
+
+    .search-wrap {
+      margin-bottom: 1.2rem;
+    }
+
+    .search-label {
+      display: block;
+      margin-bottom: 0.45rem;
+      color: var(--muted);
+      font-size: 0.9rem;
+      font-weight: 650;
+    }
+
+    .search {
+      width: 100%;
+      padding: 0.8rem 0.95rem;
+      color: var(--text);
+      background: var(--surface);
+      border: 1px solid var(--line);
+      border-radius: 12px;
+      font: inherit;
+      outline: none;
+    }
+
+    .search:focus {
+      border-color: var(--accent);
+      box-shadow: 0 0 0 3px rgba(122, 63, 43, 0.12);
+    }
+
+    .corpus-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 1rem;
+    }
+
+    .file-card {
+      display: flex;
+      flex-direction: column;
+      gap: 0.8rem;
+      min-height: 260px;
+      padding: 1.35rem;
+      background: var(--surface);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+    }
+
+    .file-card[hidden] {
+      display: none;
+    }
+
+    .file-number {
+      width: fit-content;
+      padding: 0.24rem 0.5rem;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      color: var(--accent);
+      background: var(--surface-2);
+      font-size: 0.8rem;
+      font-weight: 800;
+    }
+
+    .file-card h3 {
+      margin: 0;
+      font-size: 1.25rem;
+    }
+
+    .file-card p {
+      flex: 1;
+      margin: 0;
+      color: var(--muted);
+    }
+
+    .file-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.9rem;
+      padding-top: 0.3rem;
+      font-size: 0.92rem;
+      font-weight: 650;
+    }
+
+    .file-name {
+      color: var(--muted);
+      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+      font-size: 0.78rem;
+      overflow-wrap: anywhere;
+    }
+
+    .path-card .sequence {
+      margin-top: 0.7rem;
+      color: var(--accent);
+      font-weight: 750;
+    }
+
+    .guardrails {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 0.8rem 1.5rem;
+      padding: 1.5rem;
+      background: var(--surface);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+    }
+
+    .guardrail {
+      display: grid;
+      grid-template-columns: 2rem 1fr;
+      gap: 0.7rem;
+      align-items: start;
+    }
+
+    .guardrail strong {
+      display: block;
+      margin-bottom: 0.15rem;
+    }
+
+    .guardrail p {
+      margin: 0;
+      color: var(--muted);
+    }
+
+    .guardrail-num {
+      color: var(--accent);
+      font-weight: 800;
+    }
+
+    .footer {
+      padding: 2.5rem 0 4rem;
+      color: var(--muted);
+      font-size: 0.92rem;
+    }
+
+    .footer-row {
+      display: flex;
+      justify-content: space-between;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .status {
+      color: var(--text);
+      font-weight: 700;
+    }
+
+    code {
+      padding: 0.08em 0.28em;
+      background: var(--surface-2);
+      border-radius: 5px;
+      font-size: 0.92em;
+    }
+
+    @media (max-width: 820px) {
+      .nav {
+        align-items: flex-start;
+        flex-direction: column;
+      }
+
+      .hero {
+        padding-top: 4rem;
+      }
+
+      .section-head,
+      .about-grid,
+      .path-grid,
+      .corpus-grid,
+      .guardrails {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      html {
+        scroll-behavior: auto;
+      }
+
+      .button:hover {
+        transform: none;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <header class="site-header">
+    <div class="wrap nav">
+      <a class="brand" href="./">Freudian Research Corpus</a>
+      <nav class="nav-links" aria-label="Primary navigation">
+        <a href="#about">About</a>
+        <a href="#corpus">Corpus</a>
+        <a href="#paths">Reading paths</a>
+        <a href="#guardrails">Method</a>
+        <a href="https://github.com/gnlaera/freudian-research-corpus" target="_blank" rel="noopener">GitHub</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="wrap">
+        <span class="eyebrow">Version 1.0 · Research corpus</span>
+        <h1>Freudian and Post-Freudian Thought</h1>
+        <p class="hero-copy">
+          A structured research corpus tracing psychoanalytic thought from Freud through
+          ego psychology, object relations, self psychology, relational theory,
+          attachment, mentalization, sexuality and couple dynamics — with a disciplined
+          framework for applied reflection.
+        </p>
+
+        <div class="hero-actions">
+          <a class="button primary" href="#corpus">Browse the corpus</a>
+          <a class="button" href="https://github.com/gnlaera/freudian-research-corpus" target="_blank" rel="noopener">View repository</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="about">
+      <div class="wrap">
+        <div class="section-head">
+          <h2>What this corpus is for</h2>
+          <p>
+            The corpus is organised as a compact set of canonical Markdown files rather
+            than a collection of isolated summaries. The files build on one another while
+            preserving important disagreements between psychoanalytic schools.
+          </p>
+        </div>
+
+        <div class="about-grid">
+          <article class="mini-card">
+            <h3>Learn the traditions</h3>
+            <p>
+              Follow the development of key psychoanalytic ideas while keeping Freud,
+              Klein, Winnicott, Bion, Kohut, Kernberg, Mitchell, Benjamin, Bowlby and
+              Fonagy conceptually distinct.
+            </p>
+          </article>
+
+          <article class="mini-card">
+            <h3>Compare frameworks</h3>
+            <p>
+              Examine how different traditions explain conflict, defence, internal
+              objects, selfhood, attachment, recognition, desire, repetition and
+              relational patterns.
+            </p>
+          </article>
+
+          <article class="mini-card">
+            <h3>Reflect without diagnosing</h3>
+            <p>
+              Use psychoanalytic concepts as hypotheses for disciplined first-person
+              reflection, while preserving external reality, uncertainty and the
+              opacity of another person's mind.
+            </p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="corpus">
+      <div class="wrap">
+        <div class="section-head">
+          <h2>The eight-file corpus</h2>
+          <p>
+            File <code>00</code> governs evidence, terminology and routing. Files
+            <code>01</code>–<code>07</code> move from orientation and theory to couple
+            dynamics and applied reflection.
+          </p>
+        </div>
+
+        <div class="search-wrap">
+          <label class="search-label" for="corpus-search">Filter by topic or theorist</label>
+          <input
+            class="search"
+            id="corpus-search"
+            type="search"
+            placeholder="Try: Freud, defence, Winnicott, attachment, couple, mentalization…"
+            autocomplete="off"
+          />
+        </div>
+
+        <div class="corpus-grid" id="corpus-grid">
+
+          <article class="file-card" data-search="00 source manifest evidence hierarchy router governance sources terminology safeguards method">
+            <span class="file-number">00</span>
+            <h3>Source Manifest, Evidence Hierarchy and Router</h3>
+            <p>
+              The corpus constitution: source hierarchy, canonical editions, duplicate
+              controls, terminology governance, file routing and applied safeguards.
+            </p>
+            <div class="file-name">00_SOURCE_MANIFEST_EVIDENCE_HIERARCHY_AND_ROUTER.md</div>
+            <div class="file-links">
+              <a href="./00_SOURCE_MANIFEST_EVIDENCE_HIERARCHY_AND_ROUTER.md">Open Markdown</a>
+              <a href="https://github.com/gnlaera/freudian-research-corpus/blob/main/00_SOURCE_MANIFEST_EVIDENCE_HIERARCHY_AND_ROUTER.md" target="_blank" rel="noopener">View on GitHub</a>
+            </div>
+          </article>
+
+          <article class="file-card" data-search="01 orientation lineage method Freud Klein Fairbairn Winnicott Bion Kohut Kernberg Mitchell Benjamin Bowlby Fonagy history comparison">
+            <span class="file-number">01</span>
+            <h3>Orientation, Lineage and Method</h3>
+            <p>
+              A map of the major traditions, theoretical fault lines, terminology and
+              the disciplined method used throughout the corpus.
+            </p>
+            <div class="file-name">01_ORIENTATION_LINEAGE_AND_METHOD.md</div>
+            <div class="file-links">
+              <a href="./01_ORIENTATION_LINEAGE_AND_METHOD.md">Open Markdown</a>
+              <a href="https://github.com/gnlaera/freudian-research-corpus/blob/main/01_ORIENTATION_LINEAGE_AND_METHOD.md" target="_blank" rel="noopener">View on GitHub</a>
+            </div>
+          </article>
+
+          <article class="file-card" data-search="02 Freud dynamic unconscious repression conflict dreams repetition transference drives ego id superego narcissism death drive">
+            <span class="file-number">02</span>
+            <h3>Freud: The Dynamic Unconscious</h3>
+            <p>
+              Freud on unconscious conflict, repression, dreams, repetition,
+              transference, narcissism, drives and the structural model.
+            </p>
+            <div class="file-name">02_FREUD_THE_DYNAMIC_UNCONSCIOUS.md</div>
+            <div class="file-links">
+              <a href="./02_FREUD_THE_DYNAMIC_UNCONSCIOUS.md">Open Markdown</a>
+              <a href="https://github.com/gnlaera/freudian-research-corpus/blob/main/02_FREUD_THE_DYNAMIC_UNCONSCIOUS.md" target="_blank" rel="noopener">View on GitHub</a>
+            </div>
+          </article>
+
+          <article class="file-card" data-search="03 ego defence defense Anna Freud anxiety repression projection reaction formation intellectualisation rationalisation development McWilliams">
+            <span class="file-number">03</span>
+            <h3>Ego, Defence and Psychological Development</h3>
+            <p>
+              Ego functions, anxiety and defence, with emphasis on the function,
+              flexibility and developmental meaning of defensive processes.
+            </p>
+            <div class="file-name">03_EGO_DEFENCE_AND_PSYCHOLOGICAL_DEVELOPMENT.md</div>
+            <div class="file-links">
+              <a href="./03_EGO_DEFENCE_AND_PSYCHOLOGICAL_DEVELOPMENT.md">Open Markdown</a>
+              <a href="https://github.com/gnlaera/freudian-research-corpus/blob/main/03_EGO_DEFENCE_AND_PSYCHOLOGICAL_DEVELOPMENT.md" target="_blank" rel="noopener">View on GitHub</a>
+            </div>
+          </article>
+
+          <article class="file-card" data-search="04 object relations internal world Klein Fairbairn Winnicott Bion splitting projective identification holding containment true false self envy gratitude internal objects">
+            <span class="file-number">04</span>
+            <h3>Object Relations and the Internal World</h3>
+            <p>
+              Klein, Fairbairn, Winnicott and Bion on internal objects, splitting,
+              projective processes, dependency, holding, containment and thinking.
+            </p>
+            <div class="file-name">04_OBJECT_RELATIONS_AND_THE_INTERNAL_WORLD.md</div>
+            <div class="file-links">
+              <a href="./04_OBJECT_RELATIONS_AND_THE_INTERNAL_WORLD.md">Open Markdown</a>
+              <a href="https://github.com/gnlaera/freudian-research-corpus/blob/main/04_OBJECT_RELATIONS_AND_THE_INTERNAL_WORLD.md" target="_blank" rel="noopener">View on GitHub</a>
+            </div>
+          </article>
+
+          <article class="file-card" data-search="05 self narcissism recognition relationality Kohut Kernberg Mitchell Benjamin Bowlby Fonagy attachment mentalization mirroring selfobject relational matrix secure base">
+            <span class="file-number">05</span>
+            <h3>Self, Narcissism, Recognition and Relationality</h3>
+            <p>
+              Self psychology, Kernberg, relational psychoanalysis, recognition,
+              attachment and mentalization, with explicit boundaries between frameworks.
+            </p>
+            <div class="file-name">05_SELF_NARCISSISM_RECOGNITION_AND_RELATIONALITY.md</div>
+            <div class="file-links">
+              <a href="./05_SELF_NARCISSISM_RECOGNITION_AND_RELATIONALITY.md">Open Markdown</a>
+              <a href="https://github.com/gnlaera/freudian-research-corpus/blob/main/05_SELF_NARCISSISM_RECOGNITION_AND_RELATIONALITY.md" target="_blank" rel="noopener">View on GitHub</a>
+            </div>
+          </article>
+
+          <article class="file-card" data-search="06 love desire intimacy couple dynamics sexuality attachment jealousy infidelity aggression recognition rupture repair pursuit withdrawal Tavistock">
+            <span class="file-number">06</span>
+            <h3>Love, Desire, Intimacy and Couple Dynamics</h3>
+            <p>
+              The substantive couple-theory synthesis: love, sexuality, dependency,
+              autonomy, conflict, jealousy, reciprocal patterns, rupture and repair.
+            </p>
+            <div class="file-name">06_LOVE_DESIRE_INTIMACY_AND_COUPLE_DYNAMICS.md</div>
+            <div class="file-links">
+              <a href="./06_LOVE_DESIRE_INTIMACY_AND_COUPLE_DYNAMICS.md">Open Markdown</a>
+              <a href="https://github.com/gnlaera/freudian-research-corpus/blob/main/06_LOVE_DESIRE_INTIMACY_AND_COUPLE_DYNAMICS.md" target="_blank" rel="noopener">View on GitHub</a>
+            </div>
+          </article>
+
+          <article class="file-card" data-search="07 applied self analysis relationship reflection protocol worksheet hypotheses mentalization defence repetition attachment recognition jealousy repair communication">
+            <span class="file-number">07</span>
+            <h3>Applied Self-Analysis and Relationship Reflection</h3>
+            <p>
+              An operational framework for self-reflection: event-to-loop mapping,
+              competing hypotheses, reality testing, mentalization and practical
+              reflection protocols.
+            </p>
+            <div class="file-name">07_APPLIED_SELF_ANALYSIS_AND_RELATIONSHIP_REFLECTION.md</div>
+            <div class="file-links">
+              <a href="./07_APPLIED_SELF_ANALYSIS_AND_RELATIONSHIP_REFLECTION.md">Open Markdown</a>
+              <a href="https://github.com/gnlaera/freudian-research-corpus/blob/main/07_APPLIED_SELF_ANALYSIS_AND_RELATIONSHIP_REFLECTION.md" target="_blank" rel="noopener">View on GitHub</a>
+            </div>
+          </article>
+
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="paths">
+      <div class="wrap">
+        <div class="section-head">
+          <h2>Suggested reading paths</h2>
+          <p>
+            The files are modular, but these sequences provide efficient routes into
+            the corpus depending on the question being asked.
+          </p>
+        </div>
+
+        <div class="path-grid">
+          <article class="mini-card path-card">
+            <h3>Learn the intellectual lineage</h3>
+            <p>
+              Start with the map, then move from Freud through defence, object relations
+              and later theories of self and relationship.
+            </p>
+            <div class="sequence">01 → 02 → 03 → 04 → 05</div>
+          </article>
+
+          <article class="mini-card path-card">
+            <h3>Study love and couple dynamics</h3>
+            <p>
+              Establish the later theories of self, attachment, recognition and
+              mentalization before entering the couple synthesis.
+            </p>
+            <div class="sequence">01 → 05 → 06</div>
+          </article>
+
+          <article class="mini-card path-card">
+            <h3>Use the corpus for reflection</h3>
+            <p>
+              Begin with the applied method, then route back to the relevant substantive
+              file rather than starting with a diagnosis or preferred theory.
+            </p>
+            <div class="sequence">07 → relevant theory file → 07</div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="guardrails">
+      <div class="wrap">
+        <div class="section-head">
+          <h2>Method and guardrails</h2>
+          <p>
+            Psychoanalytic ideas are used here as disciplined interpretive frameworks,
+            not as privileged access to hidden motives.
+          </p>
+        </div>
+
+        <div class="guardrails">
+          <div class="guardrail">
+            <div class="guardrail-num">01</div>
+            <div>
+              <strong>Hypotheses, not diagnoses</strong>
+              <p>Concepts generate questions and competing formulations rather than labels or verdicts.</p>
+            </div>
+          </div>
+
+          <div class="guardrail">
+            <div class="guardrail-num">02</div>
+            <div>
+              <strong>External reality remains primary</strong>
+              <p>Actual behaviour, context, consent, incompatibility, care and harm must not be psychologised away.</p>
+            </div>
+          </div>
+
+          <div class="guardrail">
+            <div class="guardrail-num">03</div>
+            <div>
+              <strong>Theoretical differences matter</strong>
+              <p>Holding is not containment; mirroring is not recognition; object relations are not attachment theory.</p>
+            </div>
+          </div>
+
+          <div class="guardrail">
+            <div class="guardrail-num">04</div>
+            <div>
+              <strong>Other minds remain partially opaque</strong>
+              <p>Reflection distinguishes observation, first-person experience, inference, hypothesis and what remains unknown.</p>
+            </div>
+          </div>
+
+          <div class="guardrail">
+            <div class="guardrail-num">05</div>
+            <div>
+              <strong>Reciprocity is not equal responsibility</strong>
+              <p>Systemic interaction does not erase asymmetry in responsibility for deception, coercion, violence or boundary violations.</p>
+            </div>
+          </div>
+
+          <div class="guardrail">
+            <div class="guardrail-num">06</div>
+            <div>
+              <strong>Interpretation remains revisable</strong>
+              <p>Important formulations should compete with ordinary explanations and be tested against disconfirming evidence.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="wrap footer-row">
+      <div>
+        <span class="status">Freudian and Post-Freudian Thought Research Corpus v1.0</span>
+        · frozen reference edition
+      </div>
+      <div>
+        <a href="https://github.com/gnlaera/freudian-research-corpus" target="_blank" rel="noopener">GitHub repository</a>
+        &nbsp;·&nbsp;
+        <a href="https://gnlaera.github.io/freudian-research-corpus/">GitHub Pages</a>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    const search = document.getElementById("corpus-search");
+    const cards = Array.from(document.querySelectorAll(".file-card"));
+
+    search.addEventListener("input", () => {
+      const query = search.value.trim().toLowerCase();
+
+      cards.forEach((card) => {
+        const haystack = (
+          card.dataset.search + " " +
+          card.textContent
+        ).toLowerCase();
+
+        card.hidden = query !== "" && !haystack.includes(query);
+      });
+    });
+  </script>
+</body>
+</html>
 
